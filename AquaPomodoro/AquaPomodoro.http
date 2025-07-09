@@ -1,0 +1,138 @@
+@AquaPomodoro_HostAddress = http://localhost:5242
+
+###############################################################################
+# HEALTH CHECKS
+###############################################################################
+
+# Check Database Connection
+# URL: GET http://localhost:5242/api/health/database
+GET {{AquaPomodoro_HostAddress}}/api/health/database
+Accept: application/json
+
+###
+
+# Check Application Status
+# URL: GET http://localhost:5242/api/health/app
+GET {{AquaPomodoro_HostAddress}}/api/health/app
+Accept: application/json
+
+###
+
+# Check Overall Health
+# URL: GET http://localhost:5242/api/health
+GET {{AquaPomodoro_HostAddress}}/api/health
+Accept: application/json
+
+###
+
+###############################################################################
+# AUTHENTICATION
+###############################################################################
+
+# User Login
+# URL: POST http://localhost:5242/api/auth/login
+POST {{AquaPomodoro_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "mail": "umutyilmaz@hotmail.com",
+  "password": "testpassword123"
+}
+
+###
+
+# Check if Email Exists (for registration validation)
+# URL: GET http://localhost:5242/api/auth/check-email/test@example.com
+GET {{AquaPomodoro_HostAddress}}/api/auth/check-email/test@example.com
+Accept: application/json
+
+###
+
+###############################################################################
+# USER MANAGEMENT
+###############################################################################
+
+# Get All Users
+# URL: GET http://localhost:5242/api/users
+GET {{AquaPomodoro_HostAddress}}/api/users
+Accept: application/json
+
+###
+
+# Get User by ID
+# URL: GET http://localhost:5242/api/users/2
+GET {{AquaPomodoro_HostAddress}}/api/users/2
+Accept: application/json
+
+###
+
+# Register New User (Create New User)
+# URL: POST http://localhost:5242/api/users
+POST {{AquaPomodoro_HostAddress}}/api/users
+Content-Type: application/json
+
+{
+  "mail": "test@example.com",
+  "password": "testpassword123",
+  "coinBalance": 150,
+  "totalFocusTime": 0
+}
+
+###
+
+# Update User Email by ID
+# URL: PUT http://localhost:5242/api/users/1
+PUT {{AquaPomodoro_HostAddress}}/api/users/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "mail": "testmail_Edited@example.com"
+}
+
+###
+
+# Update User Password by ID
+# URL: PUT http://localhost:5242/api/users/1
+PUT {{AquaPomodoro_HostAddress}}/api/users/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "password": "newpassword123_edited"
+}
+
+###
+
+# Update User Coin Balance by ID
+# URL: PUT http://localhost:5242/api/users/1
+PUT {{AquaPomodoro_HostAddress}}/api/users/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "coinBalance": 250
+}
+
+###
+
+# Update User Total Focus Time by ID
+# URL: PUT http://localhost:5242/api/users/1
+PUT {{AquaPomodoro_HostAddress}}/api/users/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "totalFocusTime": 7200
+}
+
+###
+
+# Delete User by ID
+# URL: DELETE http://localhost:5242/api/users/1
+DELETE {{AquaPomodoro_HostAddress}}/api/users/1
+Accept: application/json
+
+###
+
+
