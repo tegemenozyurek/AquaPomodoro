@@ -42,7 +42,7 @@ Content-Type: application/json
 ###
 
 # Check if Email Exists (for registration validation)
-# URL: GET http://localhost:5242/api/auth/check-email/test@example.com
+# URL: GET http://localhost:5242/api/auth/check-email/{email}
 GET {{AquaPomodoro_HostAddress}}/api/auth/check-email/test@example.com
 Accept: application/json
 
