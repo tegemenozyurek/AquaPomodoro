@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: aquapomodoro-api
+    runtime: docker
+    plan: free
+    branch: backend
+    healthCheckPath: /
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: DATABASE_URL
+        sync: false
+    autoDeploy: true 

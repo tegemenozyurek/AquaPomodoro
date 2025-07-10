@@ -3,6 +3,10 @@ using AquaPomodoro.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure port for Render (Render provides PORT environment variable)
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+
 // Add services to the container.
 
 // Configure connection string from environment or configuration
@@ -46,7 +50,7 @@ else
 // Enable CORS
 app.UseCors();
 
-// In production, we might not want to redirect HTTP to HTTPS if Railway handles it
+// In production, we might not want to redirect HTTP to HTTPS if Render handles it
 if (app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();
@@ -56,7 +60,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Health check endpoint for Railway
+// Health check endpoint for Render
 app.MapGet("/", () => "AquaPomodoro API is running!");
 
 app.Run();

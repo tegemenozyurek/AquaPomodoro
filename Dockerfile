@@ -18,11 +18,10 @@ WORKDIR /app
 # Copy the published app from the build stage
 COPY --from=build /app/out .
 
-# Expose port (Railway will set the PORT environment variable)
-EXPOSE 8080
+# Render sets PORT environment variable dynamically
+EXPOSE $PORT
 
 # Set environment variables
-ENV ASPNETCORE_URLS=http://+:8080
 ENV ASPNETCORE_ENVIRONMENT=Production
 
 # Run the application
